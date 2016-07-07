@@ -1,0 +1,13 @@
+{
+  "name": "food-app-server",
+  "version": "0.0.0",
+  "description": "Backend for the Food App",
+  "main": "index.js",
+  "author": "Kunal Mathur",
+  "private": true,
+  "license": "BSD",
+  "dependencies": {
+    "express": "3.4.8",
+    "request": "^2.72.0"
+  }
+}
