@@ -30,9 +30,10 @@ app.get('/search', function (req, res) {
     if (!error && response.statusCode == 200) {
       var info = JSON.parse(body);
       res.send(info);
-
+      res.end();
     }
-    res.send({});
+    
+    
   }
 
   
