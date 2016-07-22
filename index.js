@@ -16,7 +16,7 @@ server.listen(port, function () {
 });
 
 app.get('/search', function (req, res) {
-
+console.log(res.query);
   var options = {
     url: 'https://developers.zomato.com/api/v2.1/search?lat='+ req.query.lat +'&lon='+ req.query.lon +'&radius='+ req.query.radius,
     headers: {
