@@ -18,7 +18,7 @@ server.listen(port, function () {
 app.get('/search', function (req, res) {
 
   var options = {
-    url: 'https://developers.zomato.com/api/v2.1/search?lat=40.732013&lon=-73.996155&radius=100',
+    url: 'https://developers.zomato.com/api/v2.1/search?lat='+ req.query.lat +'&lon='+ req.query.lon +'&radius='+ req.query.radius,
     headers: {
       'user-key': '300a387c4eca4461fb5c7a2e3b3a6265',
       'Content-Type': 'application/json'
