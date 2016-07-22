@@ -24,18 +24,18 @@ app.get('/search', function (req, res) {
       'Content-Type': 'application/json'
     }
   };
+  request(options, callback);
 
   function callback(error, response, body) {
-  if (!error && response.statusCode == 200) {
-    var info = JSON.parse(body);
-    console.log(info);
-    res.send(info);
-    
-  }
-  res.send({});
-}
+    if (!error && response.statusCode == 200) {
+      var info = JSON.parse(body);
+      res.send(info);
 
-request(options, callback);
+    }
+    res.send({});
+  }
+
+  
 
 
 });
