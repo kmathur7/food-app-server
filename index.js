@@ -1,6 +1,8 @@
 // Setup basic express server
 var express = require('express');
 var request = require('request');
+var heapdump = require('heapdump');  
+
 var app = express();
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -16,14 +18,17 @@ server.listen(port, function () {
 });
 
 app.get('/search', function (req, res) {
-console.log(res.query);
+  console.log(req.query);
   var options = {
-    url: 'https://developers.zomato.com/api/v2.1/search?lat='+ req.query.lat +'&lon='+ req.query.lon +'&radius='+ req.query.radius,
+    url: 'https://developers.zomato.com/api/v2.1/search?lat=' + req.query.lat + '&lon=' + req.query.lon + '&radius=' + req.query.radius,
     headers: {
       'user-key': '300a387c4eca4461fb5c7a2e3b3a6265',
       'Content-Type': 'application/json'
     }
   };
+  heapdump.writeSnapshot(function(err, filename) {  
+  console.log('dump written to', filename);
+});
   request(options, callback);
 
   function callback(error, response, body) {
@@ -32,13 +37,9 @@ console.log(res.query);
       res.send(info);
       res.end();
     }
-    
-    
+
+
   }
-
-  
-
-
 });
 
 // Routing
