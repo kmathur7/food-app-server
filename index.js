@@ -1,7 +1,6 @@
 // Setup basic express server
 var express = require('express');
 var request = require('request');
-var heapdump = require('heapdump');  
 
 var app = express();
 app.use(function (req, res, next) {
@@ -26,9 +25,7 @@ app.get('/search', function (req, res) {
       'Content-Type': 'application/json'
     }
   };
-  heapdump.writeSnapshot(function(err, filename) {  
-  console.log('dump written to', filename);
-});
+  
   request(options, callback);
 
   function callback(error, response, body) {
